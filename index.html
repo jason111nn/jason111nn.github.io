@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="Jason111nn, 作品集, 網頁設計, GitHub Pages, 前端開發, JavaScript, HTML, CSS">
+    <meta name="description" content="Jason111nn 的個人作品集，展示各種前端開發專案，使用 GitHub Pages 部署。">
+    <meta name="author" content="Jason111nn">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Jason111nn 作品集">
+    <meta property="og:description" content="展示 Jason111nn 的各種前端開發專案，使用 GitHub Pages 部署。">
+    <meta property="og:image" content="https://jason111nn.github.io/portfolio-preview.jpg">
+    <meta property="og:url" content="https://jason111nn.github.io">
+    <meta name="twitter:card" content="summary_large_image">
+
+
+    <link rel="icon" href="./img/logo.png">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>Jason111nn</title>
+    <style>
+        main {
+            width: 100vw;
+            min-height: 100vh;
+            background-color: #faebd7;
+            box-shadow: 0 0 30px 3vw #faebd7;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #portfolio-container {
+            width: 100%;
+            display: grid;
+            justify-items: center;
+        }
+
+        .portfolio-item {
+            width: 80%;
+            margin: 5px;
+            border-radius: 10px;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            background: #fff;
+            display: none;
+        }
+
+        .portfolio-item img {
+            width: 80%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .portfolio-item h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .portfolio-item span {
+            font-size: 14px;
+            color: gray;
+        }
+
+        .portfolio-item p {
+            font-size: 14px;
+            margin: 10px 0;
+            color: #444;
+        }
+
+        .portfolio-item a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #555555;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        .portfolio-item a:hover {
+            background-color: #383838;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="background">
+        <img id="background-img" src="./img/bg.jpg" alt="">
+    </div>
+    <header class="home-header">
+        <img data-aos="zoom-in" class="home-logo" src="./img/logo.png" alt="LOGO">
+        <h1 data-aos="zoom-in">HI! I am Jason111nn</h1>
+        <h2 data-aos="fade-up" data-aos-easing="ease" data-aos-delay="400">一名網頁設計師(A web designer)</h2>
+        <div class="scrollDown-btn" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="500"
+            onclick="scrollAnimation('main','500')">
+            <h3>Scroll down</h3>
+            <div class="scrollDown" style="transform: rotate(135deg);"></div>
+        </div>
+    </header>
+    <main>
+        <h1>|Portfolio|</h1>
+        <div id="portfolio-container">
+            <p>載入中...</p>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+
+    <button id="toTopBtn" onclick="scrollAnimation('header','500')">
+
+    </button>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="./scripts/generate_sitemap.js"></script>
+    <script src="./scripts/portfolio.js"></script>
+    <script>
+        $(document).ready(function () {
+            AOS.init();
+
+            $('html, body').scrollTop(localStorage.getItem('header'));
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() >= $('header').outerHeight()) {
+                    $('#toTopBtn').css('display', 'flex').fadeIn(500);
+                } else {
+                    $('#toTopBtn').fadeOut(500, function () {
+                        $(this).css('display', 'none');
+                    });
+                }
+            });
+
+            tippy('#toTopBtn', {
+                content: "Back to top",
+            });
+        });
+
+        function scrollAnimation(selector, time) {
+            var targetElement = $(selector);
+
+            if (targetElement.length) {
+                $('html, body').animate({
+                    scrollTop: targetElement.offset().top
+                }, time);
+            } else {
+                console.error("Element with ID " + selector + " not found.");
+            }
+        }
+
+        tippy('#toTopBtn', {
+            content: "Back to top",
+        });
+    </script>
+</body>
+
+</html>

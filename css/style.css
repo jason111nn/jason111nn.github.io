@@ -1,0 +1,324 @@
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(250, 235, 215);
+    border-radius: 10px;
+}
+
+
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(147, 147, 147);
+}
+
+body {
+    margin: 0;
+    font-family: Helvetica, Tahoma;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow-x: hidden;
+    user-select: none;
+    /* standard syntax */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+header {
+    background-color: rgba(250, 235, 215, 0.589);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#background {
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+#background-img {
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.home-header>h1 {
+    color: #585858;
+    font-size: 60px;
+    text-align: center;
+}
+
+.home-header>h2 {
+    color: #3c3c3c;
+    font-size: 30px;
+    text-align: center;
+}
+
+.home-logo {
+    width: 270px;
+    height: 270px;
+}
+
+main {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #faebd7;
+    box-shadow: 0 0 30px 3vw #faebd7;
+}
+
+@keyframes scrollDownAnimation {
+    0% {
+        transform: translateY(0) rotate(135deg);
+    }
+
+    50% {
+        transform: translateY(10px) rotate(135deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(135deg);
+    }
+}
+
+.scrollDown-btn {
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.scrollDown {
+    width: 25px;
+    height: 25px;
+    border: #3c3c3c solid;
+    border-bottom: 18px;
+    border-left: 18px;
+    transition: 1s;
+}
+
+.scrollDown-btn>h3 {
+    font-size: 30px;
+    color: #3c3c3c;
+}
+
+#toTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(188, 188, 188, 0.8);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#toTopBtn:hover {
+    background-color: rgba(100, 100, 100, 0.9);
+}
+
+#toTopBtn::before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    border-top: 8px solid #d8d8d8;
+    border-right: 8px solid #d8d8d8;
+    transform: rotate(-45deg);
+
+}
+
+@media screen and (max-height: 700px) {
+    .home-header>h1 {
+        font-size: 40px;
+    }
+
+    .home-header>h2 {
+        font-size: 30px;
+    }
+
+    .home-logo {
+        width: 150px;
+        height: 150px;
+    }
+
+
+    .scrollDown-btn>h3 {
+        font-size: 20px;
+    }
+
+    .scrollDown {
+        width: 10px;
+        height: 10px;
+        border-bottom: 15px;
+        border-left: 15px;
+    }
+
+
+}
+
+@media screen and (max-width: 800px) {
+    .home-header>h1 {
+        font-size: 45px;
+    }
+
+    .home-header>h2 {
+        font-size: 35px;
+    }
+
+    .home-logo {
+        width: 200px;
+        height: 200px;
+    }
+
+    .scrollDown-btn>h3 {
+        font-size: 30px;
+    }
+
+    .scrollDown {
+        width: 20px;
+        height: 20px;
+        border-bottom: 24px;
+        border-left: 24px;
+    }
+
+}
+
+@media screen and (max-height: 550px) {
+    .home-header>h1 {
+        font-size: 30px;
+    }
+
+    .home-header>h2 {
+        font-size: 20px;
+    }
+
+    .home-logo {
+        width: 100px;
+        height: 100px;
+    }
+
+
+    .scrollDown-btn>h3 {
+        font-size: 20px;
+    }
+
+    .scrollDown {
+        width: 10px;
+        height: 10px;
+        border-bottom: 2px;
+        border-left: 2px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .home-header>h1 {
+        font-size: 40px;
+    }
+
+    .home-header>h2 {
+        font-size: 25px;
+    }
+
+    .home-logo {
+        width: 200px;
+        height: 200px;
+    }
+
+    .scrollDown-btn>h3 {
+        font-size: 20px;
+    }
+
+    .scrollDown {
+        width: 20px;
+        height: 20px;
+        border-bottom: 24px;
+        border-left: 24px;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+    .home-header>h1 {
+        font-size: 30px;
+    }
+
+    .home-header>h2 {
+        font-size: 20px;
+    }
+
+    .home-logo {
+        width: 150px;
+        height: 150px;
+    }
+
+
+    .scrollDown-btn>h3 {
+        font-size: 18px;
+    }
+
+    .scrollDown {
+        width: 15px;
+        height: 15px;
+        border-bottom: 20px;
+        border-left: 20px;
+    }
+
+    #toTopBtn {
+        bottom: 10px;
+        right: 6px;
+        width: 38px;
+        height: 38px;
+    }
+
+    #toTopBtn::before {
+        width: 10px;
+        height: 10px;
+        border-top: 4px solid #d8d8d8;
+        border-right: 4px solid #d8d8d8;
+    }
+
+}
+
+@media screen and (max-width: 300px) {
+    .home-header>h1 {
+        font-size: 25px;
+    }
+
+    .home-header>h2 {
+        font-size: 15px;
+    }
+
+    .home-logo {
+        width: 125px;
+        height: 125px;
+    }
+
+
+    .scrollDown-btn>h3 {
+        font-size: 15px;
+    }
+
+    .scrollDown {
+        width: 10px;
+        height: 10px;
+        border-bottom: 15px;
+        border-left: 15px;
+    }
+
+}

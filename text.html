@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品集 | Jason111nn</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+        }
+
+        .portfolio-item {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            text-align: center;
+            background: #fff;
+            display: none;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .portfolio-item h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .portfolio-item span {
+            font-size: 14px;
+            color: gray;
+        }
+
+        .portfolio-item p {
+            font-size: 14px;
+            margin: 10px 0;
+            color: #444;
+        }
+
+        .portfolio-item a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #555555;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        .portfolio-item a:hover {
+            background-color: #383838;
+        }
+
+        .stars {
+            font-size: 14px;
+            color: #ffcc00;
+            margin-top: 5px;
+        }
+
+        #iframe-container {
+            display: none;
+            position: fixed;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            /* Ensure it is on top of other elements */
+            border-radius: 10px;
+            /* Add rounded corners */
+            padding: 5px;
+            background-color: #555555;
+        }
+
+        #iframe-container button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff5555;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            /* Add rounded corners to the close button */
+        }
+
+        #iframe-container button:hover {
+            background-color: #ff0000;
+        }
+
+        #iframe-viewer {
+            width: 100%;
+            height: calc(100% - 40px);
+            /* Adjust height to account for the button */
+            border: none;
+            /* Remove default border */
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            /* Add rounded corners to the bottom of the iframe */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="portfolio-container">
+        <p>載入中...</p>
+    </div>
+
+    <!-- 用來顯示 index.html -->
+    <div id="iframe-container"
+        style="display: none; position: fixed; top: 10%; left: 10%; width: 80%; height: 80%; background: white; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+        <button onclick="$('#iframe-container').fadeOut();"
+            style="position: absolute; top: 10px; right: 10px;">✖</button>
+        <iframe id="iframe-viewer" width="100%" height="90%"></iframe>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            let container = $("#portfolio-container");
+
+            $.get("https://api.github.com/users/jason111nn/repos", function (data) {
+                container.empty(); // 清空 "載入中..." 文字
+
+                $(data).each(function (index, repo) {
+                    if (!repo.fork) { // 過濾 fork 的儲存庫
+                        let imageUrl = `https://raw.githubusercontent.com/jason111nn/${repo.name}/main/portfolio.img`;
+                        let demoUrl = `https://jason111nn.github.io/${repo.name}/`; // GitHub Pages 可能的 URL
+                        let rawHtmlUrl = `https://jason111nn.github.io/${repo.name}`; // index.html 的 raw 連結
+
+                        // 建立作品 div
+                        let item = $("<div>").addClass("portfolio-item");
+
+                        // 作品標題
+                        item.append(`<h2>${repo.name}</h2>`);
+                        item.append(`<span>最後更新: ${new Date(repo.updated_at).toLocaleDateString()}</span>`);
+
+                        // 嘗試載入圖片
+                        let img = $("<img>").attr("src", imageUrl);
+                        img.on("error", function () {
+                            $(this).attr("src", `./portfolio.jpg`); // 預設圖片
+                        });
+                        item.prepend(img);
+
+                        // 按鈕區塊
+                        let buttonContainer = $("<div>");
+
+                        // 查看專案按鈕
+                        let repoBtn = $("<a>")
+                            .attr("href", repo.html_url)
+                            .attr("target", "_blank")
+                            .text("查看專案");
+
+                        // 讀取 index.html 按鈕
+                        let demoBtn = $("<button>")
+                            .text("線上 Demo")
+                            .click(function () {
+                                $("#iframe-viewer").attr("src", rawHtmlUrl);
+                                $("#iframe-container").fadeIn();
+                            });
+
+                        buttonContainer.append(repoBtn, demoBtn);
+                        item.append(buttonContainer);
+
+                        // 加入作品
+                        container.append(item);
+                        item.fadeIn(500);
+                    }
+                });
+            }).fail(function () {
+                container.html("<p>無法載入作品集，請稍後再試。</p>");
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
