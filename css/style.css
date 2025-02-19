@@ -275,6 +275,7 @@ main {
     .scrollDown {
         width: 15px;
         height: 15px;
+        : ;
         border-bottom: 20px;
         border-left: 20px;
     }
