@@ -13,7 +13,7 @@ $(document).ready(function () {
                 item.append(`<h2>${repo.name}</h2>`);
                 item.append(`<span>最後更新: ${new Date(repo.updated_at).toLocaleDateString()}</span>`);
 
-                let img = $("<img>").attr("src", imageUrl);
+                let img = $("<img>").attr({ src: imageUrl, alt: imageUrl });
                 img.on("error", function () {
                     $(this).attr("src", `./portfolio.jpg`); // 預設圖片
                 });
