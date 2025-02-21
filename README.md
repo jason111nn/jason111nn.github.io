@@ -40,6 +40,6 @@
 
 ## 聯絡方式:
 
-- email:[mail]<jason5j288@gmail.com>
+- email:<jason5j288@gmail.com>
 - instagram:[Jason_111nn](https://www.instagram.com/jason_111nn?igsh=b2YyczAwMHQ3djMx&utm_source=qr)
 - github:[jason111nn](https://github.com/jason111nn)
