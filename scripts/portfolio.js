@@ -49,7 +49,7 @@ $(document).ready(function () {
                     .attr("target", "_blank")
                     .text("查看專案");
 
-                let demoBtn = $("<button>")
+                let demoBtn = $("<a>")
                     .text("線上 Demo")
                     .click(function () {
                         $("#iframe-viewer").attr("src", rawHtmlUrl);
@@ -66,6 +66,6 @@ $(document).ready(function () {
             }
         });
     }).fail(function () {
-        container.html("<div></div><p>無法載入作品集，請稍後再試。</p>");
+        container.html("<p>無法載入作品集，請稍後再試。</p>");
     });
 });

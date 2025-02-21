@@ -33,143 +33,6 @@
     <link rel="stylesheet" href="./css/style.css">
 
     <title>Jason111nn</title>
-    <style>
-        main {
-            width: 100vw;
-            min-height: 100vh;
-            background-color: #faebd7;
-            box-shadow: 0 0 30px 3vw #faebd7;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        #portfolio-container {
-            width: 90%;
-            /* 讓容器的寬度有 90%，自適應屏幕 */
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            /* 使用自適應列數 */
-            gap: 20px;
-            /* 設置作品項目之間的間距 */
-            justify-items: center;
-            padding: 20px 0;
-        }
-
-        .portfolio-item {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px #c8b498;
-            background: #fff5e7;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            /* 動畫過渡 */
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px #c8b498;
-        }
-
-        .portfolio-item img {
-            width: 80%;
-            /* 圖片寬度自適應 */
-            max-width: 250px;
-            /* 限制圖片最大寬度 */
-            height: auto;
-            margin: 15px;
-            border-radius: 8px;
-            object-fit: cover;
-            /* 保持圖片比例，避免拉伸 */
-        }
-
-        .portfolio-item h2 {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 10px 0;
-            text-align: center;
-            /* 作品名居中顯示 */
-        }
-
-        .portfolio-item span {
-            font-size: 14px;
-            color: gray;
-            text-align: center;
-            /* 更新時間顯示居中 */
-        }
-
-        .portfolio-item p {
-            font-size: 14px;
-            margin: 10px 0;
-            color: #444;
-            text-align: center;
-            /* 作品描述居中 */
-        }
-
-        .portfolio-item a {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 12px;
-            background-color: #555555;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-right: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .portfolio-item a:hover {
-            background-color: #383838;
-            /* 滑鼠懸停時變色 */
-        }
-
-        #iframe-container {
-            width: 100vw;
-            height: 100vh;
-            display: none;
-            position: fixed;
-            background: #ffffff69;
-            top: 0;
-            bottom: 0;
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #iframe-container button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-            background: #a55757;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        #iframe-container button:hover {
-            background-color: #d59797;
-        }
-
-        /* iframe 的樣式 */
-        #iframe-viewer {
-            width: 80%;
-            height: 80%;
-            padding: 1.2vw;
-            border: none;
-            background-color: #e0c8a6;
-            border-radius: 20px;
-        }
-    </style>
 
 </head>
 
@@ -190,7 +53,6 @@
     <main>
         <h1>|Portfolio|</h1>
         <div id="portfolio-container">
-            <div></div>
             <p>載入中...</p>
         </div>
 
@@ -253,6 +115,7 @@
         tippy('#toTopBtn', {
             content: "Back to top",
         });
+        
     </script>
 </body>
 
