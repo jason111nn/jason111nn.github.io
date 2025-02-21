@@ -1,0 +1,37 @@
+name: Generate Sitemap
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # 每小時執行一次
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write  # 讓 Actions 有寫入權限
+
+jobs:
+  generate_sitemap:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 檢出 GitHub Pages 專案
+        uses: actions/checkout@v3
+
+      - name: 安裝 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: 安裝 Axios
+        run: npm install axios
+
+      - name: 生成 sitemap.xml
+        run: node scripts/generate_sitemap.js  # 執行 sitemap 生成邏輯
+
+      - name: 提交並推送變更
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/sitemap.xml
+          git diff --staged --quiet || (git commit -m "🔄 更新 sitemap.xml" && git push)
