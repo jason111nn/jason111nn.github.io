@@ -4,8 +4,7 @@ const path = require('path');
 
 const GITHUB_USERNAME = 'jason111nn';  // 你的 GitHub 使用者名稱
 const BASE_URL = 'https://jason111nn.github.io';  // 你的 GitHub Pages 網址
-const OUTPUT_DIR = path.join(__dirname, '../public');  // GitHub Pages 的公開資料夾
-const OUTPUT_FILE = path.join(OUTPUT_DIR, 'sitemap.xml');  // 生成的 sitemap.xml 檔案路徑
+const OUTPUT_FILE = path.join(__dirname, '../sitemap.xml');  // 直接存到根目錄
 
 async function generateSitemap() {
     try {
@@ -26,12 +25,7 @@ async function generateSitemap() {
 
         sitemap += `</urlset>`;
 
-        // 確保 public 資料夾存在
-        if (!fs.existsSync(OUTPUT_DIR)) {
-            fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-        }
-
-        // 儲存 sitemap.xml
+        // 儲存 sitemap.xml 到根目錄
         fs.writeFileSync(OUTPUT_FILE, sitemap);
         console.log('✅ sitemap.xml 生成成功！');
     } catch (error) {
