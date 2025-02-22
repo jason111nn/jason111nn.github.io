@@ -33,5 +33,5 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/sitemap.xml
+          git add sitemap.xml  # 修改為根目錄中的 sitemap.xml
           git diff --staged --quiet || (git commit -m "🔄 更新 sitemap.xml" && git push)
