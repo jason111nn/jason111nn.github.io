@@ -13,21 +13,21 @@ async function generateSitemap() {
         const repos = response.data;
 
         let sitemap = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitemap</title>
-</head>
-<body>
-    <h1>Your Sitemap</h1>
-    <p>This is your sitemap file content:</p>
-    <ul>\n`;
+                       <html lang="en">
+                       <head>
+                       <meta charset="UTF-8">
+                       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                       <title>Sitemap</title>
+                       </head>
+                       <body>
+                           <h1>Your Sitemap</h1>
+                           <p>This is your sitemap file content:</p>
+                       <ul>\n`;
 
         // 遍歷所有的專案，並將它們加入到 HTML 中
         repos.forEach((repo) => {
             if (!repo.fork) {  // 排除 fork 的專案
-                sitemap += `      <li><a href="${BASE_URL}/${repo.name}/">${repo.name}</a></li>\n`;
+                sitemap += `<li><a href="${BASE_URL}/${repo.name}/">${repo.name}</a></li>\n`;
             }
         });
 
