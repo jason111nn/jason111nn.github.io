@@ -5,30 +5,41 @@ const path = require('path');
 const GITHUB_USERNAME = 'jason111nn';
 const BASE_URL = 'https://jason111nn.github.io';
 const OUTPUT_XML = path.join(__dirname, '../sitemap.xml');
-const OUTPUT_XSL = path.join(__dirname, './sitemap.xsl'); // 存到 scripts/ 目錄
+const OUTPUT_XSL = path.join(__dirname, '../docs/sitemap.xsl'); // 改到 docs/
 
 async function generateSitemap() {
     try {
         const response = await axios.get(`https://api.github.com/users/${GITHUB_USERNAME}/repos`);
         const repos = response.data;
 
+        if (!Array.isArray(repos) || repos.length === 0) {
+            throw new Error('❌ 沒有找到任何 GitHub Repositories');
+        }
+
         let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-        sitemap += `<?xml-stylesheet type="text/xsl" href="scripts/sitemap.xsl"?>\n`;
+        sitemap += `<?xml-stylesheet type="text/xsl" href="docs/sitemap.xsl"?>\n`;
         sitemap += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-        sitemap += `  <url>\n    <loc>${BASE_URL}/</loc>\n  </url>\n`;
+        sitemap += `  <url>\n    <loc>${BASE_URL}/</loc>\n  </url>\n`;  // 首頁
+
+        let hasUrls = false;
 
         repos.forEach((repo) => {
             if (!repo.fork) {
                 sitemap += `  <url>\n    <loc>${BASE_URL}/${repo.name}/</loc>\n  </url>\n`;
+                hasUrls = true;
             }
         });
 
         sitemap += `</urlset>`;
 
+        if (!hasUrls) {
+            throw new Error('❌ 沒有有效的 URL 被加入 sitemap.xml');
+        }
+
         fs.writeFileSync(OUTPUT_XML, sitemap);
         console.log('✅ sitemap.xml 生成成功！');
     } catch (error) {
-        console.error('❌ 無法獲取 GitHub Repos:', error);
+        console.error('❌ 錯誤:', error);
     }
 }
 
