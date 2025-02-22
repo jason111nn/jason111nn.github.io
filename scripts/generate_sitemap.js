@@ -5,7 +5,14 @@ const path = require('path');
 const GITHUB_USERNAME = 'jason111nn';
 const BASE_URL = 'https://jason111nn.github.io';
 const OUTPUT_XML = path.join(__dirname, '../sitemap.xml');
-const OUTPUT_XSL = path.join(__dirname, '../docs/sitemap.xsl'); // 改到 docs/
+const OUTPUT_XSL = path.join(__dirname, 'sitemap.xsl');  // 放到 scripts 資料夾
+
+// 確保 scripts 資料夾存在
+const OUTPUT_DIR = path.join(__dirname, '');  // 這裡指定為當前目錄，因為放在 scripts/ 裡
+
+if (!fs.existsSync(OUTPUT_DIR)) {
+    fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+}
 
 async function generateSitemap() {
     try {
@@ -17,7 +24,7 @@ async function generateSitemap() {
         }
 
         let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-        sitemap += `<?xml-stylesheet type="text/xsl" href="docs/sitemap.xsl"?>\n`;
+        sitemap += `<?xml-stylesheet type="text/xsl" href="scripts/sitemap.xsl"?>\n`;
         sitemap += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
         sitemap += `  <url>\n    <loc>${BASE_URL}/</loc>\n  </url>\n`;  // 首頁
 
@@ -43,7 +50,7 @@ async function generateSitemap() {
     }
 }
 
-// 確保 sitemap.xsl 也被生成
+// 產生 sitemap.xsl
 const XSL_CONTENT = `<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
