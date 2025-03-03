@@ -27,11 +27,11 @@
         content="瀏覽 Jason111nn 的個人作品集，展示各種網頁設計與前端開發專案，包含 RWD 設計、動態動畫、交互體驗等技術，並使用 GitHub Pages 部署。">
     <meta name="twitter:image" content="https://jason111nn.github.io/img/logo.png">
 
-
     <link rel="icon" href="./img/logo.png">
 
+    <!-- 使用更新後的 CDN -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -50,7 +50,7 @@
             align-items: center;
         }
 
-        #pokemon>iframe {
+        #pokemon > iframe {
             width: 90vw;
             height: 90vh;
             margin: 20px;
@@ -58,7 +58,6 @@
             box-shadow: 0 0 10px 5px rgb(201, 167, 137);
         }
     </style>
-
 </head>
 
 <body>
@@ -70,7 +69,7 @@
         <h1 data-aos="zoom-in">HI! I am Jason111nn</h1>
         <h2 data-aos="fade-up" data-aos-easing="ease" data-aos-delay="400">一名網頁設計師(A web designer)</h2>
         <div class="scrollDown-btn" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="500"
-            onclick="scrollAnimation('main','500')">
+            onclick="scrollAnimation('main',500)">
             <h3>Scroll down</h3>
             <div class="scrollDown" style="transform: rotate(135deg);"></div>
         </div>
@@ -81,44 +80,43 @@
             <p>載入中...</p>
         </div>
         <div id="pokemon">
-
             <h1>|喜歡的網站|</h1>
             <span>作者:Simon Goellner</span>
-            <span>來源:<span onclick="location.href = 'https:\/\/poke-holo.simey.me\/';"
-                    style="color: sandybrown; cursor: pointer;">https://poke-holo.simey.me/</span></span>
-            <iframe src="https:\/\/poke-holo.simey.me\/" frameborder="0"></iframe>
-
+            <span>來源:
+                <span onclick="location.href = 'https://poke-holo.simey.me/';"
+                    style="color: sandybrown; cursor: pointer;">https://poke-holo.simey.me/</span>
+            </span>
+            <!-- 加入 allow 屬性，避免感測器權限錯誤 -->
+            <iframe src="https://poke-holo.simey.me/" frameborder="0" allow="accelerometer; gyroscope; encrypted-media;"></iframe>
         </div>
         <div id="iframe-container">
             <button onclick="$('#iframe-container').fadeOut();">✖</button>
             <iframe id="iframe-viewer"></iframe>
         </div>
-        <canvas id="canvas-ai">
-
-        </canvas>
+        <canvas id="canvas-ai"></canvas>
     </main>
 
-    <button id="toTopBtn" onclick="scrollAnimation('header','500')">
+    <button id="toTopBtn" onclick="scrollAnimation('header',500)"></button>
 
-    </button>
+    <!-- 使用 CDN 載入第三方腳本 -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="./scripts/generate_sitemap.js"></script>
+    <!-- 移除 generate_sitemap.js，避免 require 錯誤 -->
     <script src="./scripts/portfolio.js"></script>
-
     <script src="./scripts/gpt.js"></script>
 
     <script>
         $(document).ready(function () {
             AOS.init();
 
-            $("#pokemon").attr("src", "https://poke-holo.simey.me/");
+            // 正確設定 iframe 的 src
+            $("#pokemon iframe").attr("src", "https://poke-holo.simey.me/");
 
             $('html, body').scrollTop(localStorage.getItem('header'));
 
@@ -139,20 +137,18 @@
 
         function scrollAnimation(selector, time) {
             var targetElement = $(selector);
-
             if (targetElement.length) {
                 $('html, body').animate({
                     scrollTop: targetElement.offset().top
                 }, time);
             } else {
-                console.error("Element with ID " + selector + " not found.");
+                console.error("Element " + selector + " not found.");
             }
         }
 
         tippy('#toTopBtn', {
             content: "Back to top",
         });
-
     </script>
 </body>
 
