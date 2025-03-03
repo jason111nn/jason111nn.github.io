@@ -93,10 +93,10 @@
             <button onclick="$('#iframe-container').fadeOut();">✖</button>
             <iframe id="iframe-viewer"></iframe>
         </div>
-    </main>
-    <footer>
+        <canvas id="canvas-ai">
 
-    </footer>
+        </canvas>
+    </main>
 
     <button id="toTopBtn" onclick="scrollAnimation('header','500')">
 
@@ -111,6 +111,9 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="./scripts/generate_sitemap.js"></script>
     <script src="./scripts/portfolio.js"></script>
+
+    <script src="./scripts/gpt.js"></script>
+
     <script>
         $(document).ready(function () {
             AOS.init();
