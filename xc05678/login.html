@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>簽到系統</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; text-align: center; }
+    #stat { margin-top: 20px; font-size: 1.2em; color: green; }
+  </style>
+</head>
+<body>
+  <h2>正在簽到中...</h2>
+  <div id="stat">請稍候</div>
+
+  <script>
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbxe4UbcKA3iwSVFWvp57dUanNwAm-zLEyZRdycnYugKLCMVT_0uyTBGwpd7N7RhSQ_j/exec";
+
+    async function start() {
+      await liff.init({ liffId: "2007371559-WYwryZg6" });
+      if (!liff.isLoggedIn()) return liff.login();
+
+      const profile = await liff.getProfile();
+      const userId = profile.userId;
+
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const payload = {
+          userId: userId,
+          timestamp: new Date().toISOString(),
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        };
+
+        document.getElementById("stat").innerText = "簽到中...";
+
+        try {
+          const res = await fetch(GAS_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+
+          const result = await res.text();
+          document.getElementById("stat").innerText = result;
+        } catch (e) {
+          document.getElementById("stat").innerText = "傳送失敗：" + e;
+        }
+
+        setTimeout(() => liff.closeWindow(), 3000);
+      }, () => {
+        document.getElementById("stat").innerText = "無法取得定位，請開啟 GPS";
+      });
+    }
+
+    start();
+  </script>
+</body>
+</html>
