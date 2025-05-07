@@ -41,14 +41,20 @@
           });
 
           const result = await res.text();
+          // 同時用 alert 和頁面文字顯示結果
+          alert(result);
           document.getElementById("stat").innerText = result;
         } catch (e) {
-          document.getElementById("stat").innerText = "傳送失敗：" + e;
+          const errMsg = "傳送失敗：" + e;
+          alert(errMsg);
+          document.getElementById("stat").innerText = errMsg;
         }
 
         setTimeout(() => liff.closeWindow(), 3000);
       }, () => {
-        document.getElementById("stat").innerText = "無法取得定位，請開啟 GPS";
+        const locErr = "無法取得定位，請開啟 GPS";
+        alert(locErr);
+        document.getElementById("stat").innerText = locErr;
       });
     }
 
