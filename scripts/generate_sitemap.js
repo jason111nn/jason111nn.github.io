@@ -24,7 +24,6 @@ async function generateSitemap() {
         }
 
         let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-        sitemap += `<?xml-stylesheet type="text/xsl" href="scripts/sitemap.xsl"?>\n`;
         sitemap += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
         sitemap += `  <url>\n    <loc>${BASE_URL}/</loc>\n  </url>\n`;  // 首頁
 
