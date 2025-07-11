@@ -5,7 +5,7 @@ const path = require('path');
 const GITHUB_USERNAME = 'jason111nn';
 const BASE_URL = 'https://jason111nn.github.io';
 const OUTPUT_XML = path.join(__dirname, '../sitemap.xml');
-const OUTPUT_XSL = path.join(__dirname, 'sitemap.xsl');  // 放到 scripts 資料夾
+const OUTPUT_XSL = path.join(__dirname, '../sitemap.xsl');  // 放到 scripts 資料夾
 
 // 確保 scripts 資料夾存在
 const OUTPUT_DIR = path.join(__dirname, '');  // 這裡指定為當前目錄，因為放在 scripts/ 裡
