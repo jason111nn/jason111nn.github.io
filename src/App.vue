@@ -175,8 +175,10 @@ onMounted(() => {
             <div class="mb-16">
                 <h1 ref="titleRef"
                     class="text-7xl md:text-9xl font-black text-slate-900 dark:text-white tracking-[-0.05em] leading-none">
-                    COOKING<br><span
-                        class="text-transparent bg-clip-text bg-linear-to-r from-slate-900 to-slate-500 dark:from-white dark:to-slate-500">NOW</span>
+                    COOKING<br>
+                    <span class="inline-block px-1 text-transparent bg-clip-text bg-linear-to-r from-slate-900 to-slate-500 dark:from-white dark:to-slate-500">
+                        NOW
+                    </span>
                 </h1>
 
                 <p ref="subTitleRef"
