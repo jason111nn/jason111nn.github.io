@@ -234,7 +234,7 @@ onMounted(() => {
 
                 <!-- 頭像本體 -->
                 <img src="/profile-icon.jpeg" alt="LOGO"
-                    class="relative w-28 h-28 md:w-32 md:h-32 rounded-full object-cover border-4 border-white shadow-2xl transition-transform duration-500 group-hover:scale-105 active:scale-95">
+                    class="relative w-28 h-28 md:w-32 md:h-32 rounded-full object-cover border-4 border-slate-600 dark:border-white  shadow-2xl transition-transform duration-500 group-hover:scale-105 active:scale-95">
             </div>
         </main>
 
