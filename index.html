@@ -1,73 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading...</title>
-    <style>
-        @keyframes nightFlow {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            100% {
-                background-position: 100% 50%;
-            }
-        }
-
-        body {
-            margin: 0;
-            /* background-color: rgb(252, 255, 212); */
-            background: linear-gradient(120deg, #1a1b3a, #2a1f4a, #1b294a);
-            animation: nightFlow 12s ease-in-out infinite alternate;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            user-select: none;
-            font-family: 'Orbitron', 'Noto Sans TC', sans-serif;
-            overflow-x: hidden;
-            --font: #bebebe;
-        }
-
-        img {
-            width: 20vw;
-            transform: matrix(20);
-            border-radius: 2vh;
-            box-shadow: 2vh 2vh 2vh 5px rgba(58, 58, 58, 0.555);
-        }
-
-        h1 {
-            font-size: 4vw;
-        }
-
-        #clock {
-            font-family: 'Orbitron', 'Roboto Mono', monospace;
-            font-size: 6vw;
-            letter-spacing: 0.1em;
-        }
-    </style>
-
-</head>
-
-<body>
-    <img src="./load.gif" alt="">
-    <h1 style="text-align: center; color: var(--font)">(╹ڡ╹ )<br>開發中</h1>
-    <div id="clock" style="color: var(--font);">00:00:00</div>
-</body>
-<script>
-    function updateClock() {
-        const now = new Date();
-        const h = String(now.getHours()).padStart(2, '0');
-        const m = String(now.getMinutes()).padStart(2, '0');
-        const s = String(now.getSeconds()).padStart(2, '0');
-        document.getElementById('clock').textContent = `${h}:${m}:${s}`;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-</script>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/icons.svg" />
+    <title>jason111nn.github.io</title>
+  </head>
+  <body>
+    <div id="app">
+      
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>

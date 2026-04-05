@@ -1,0 +1,3 @@
+/* css-disable unknownAtRules */
+@import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
