@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jason111nn.github.io/sitemap.xml
