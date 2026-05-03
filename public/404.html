@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 RESOURCE_NOT_FOUND | SPARWORKS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #111827;
+            --primary-muted: #4A677D;
+            --accent-bronze: #8C7355;
+            --text-main: #E5E7EB;
+            --text-dim: #6B7280;
+        }
+
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Noto Sans TC', sans-serif;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+
+        .grid-bg {
+            position: absolute; inset: 0; opacity: 0.05;
+            background-image: linear-gradient(var(--primary-muted) 1px, transparent 1px), 
+                              linear-gradient(90deg, var(--primary-muted) 1px, transparent 1px);
+            background-size: 40px 40px; pointer-events: none;
+        }
+
+        .container { text-align: center; z-index: 10; padding: 20px; }
+
+        .error-code {
+            font-size: clamp(120px, 20vw, 180px);
+            font-weight: 900; line-height: 1;
+            color: var(--accent-bronze);
+            letter-spacing: -0.05em; margin-bottom: 20px;
+        }
+
+        .status-tag {
+            display: inline-block; padding: 6px 16px;
+            background: rgba(74, 103, 125, 0.1);
+            border: 1px solid var(--primary-muted);
+            color: var(--primary-muted);
+            font-size: 11px; font-weight: 900;
+            text-transform: uppercase; letter-spacing: 0.3em;
+            border-radius: 4px; margin-bottom: 30px;
+        }
+
+        h1 { font-size: 28px; font-weight: 700; letter-spacing: 0.15em; margin-bottom: 20px; }
+
+        p {
+            font-size: 15px; color: var(--text-dim);
+            max-width: 420px; margin: 0 auto 40px;
+            line-height: 1.8; font-weight: 400;
+        }
+
+        .btn-return {
+            display: inline-flex; align-items: center;
+            padding: 14px 36px;
+            background-color: var(--primary-muted);
+            color: white; text-decoration: none;
+            font-weight: 700; font-size: 14px;
+            border-radius: 8px; transition: all 0.3s ease;
+            letter-spacing: 0.1em;
+        }
+
+        .btn-return:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            position: absolute; bottom: 40px;
+            font-size: 10px; font-family: monospace;
+            color: var(--text-dim); letter-spacing: 0.4em;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="container">
+        <div class="status-tag">SYSTEM_COMMUNICATION_ERROR</div>
+        <div class="error-code">404</div>
+        <h1>要求之資源不存在</h1>
+        <p>
+            您所請求的頁面可能已被移除、遷移或暫時不可用。<br>
+            請核對 URL 路徑之正確性，或返回首頁導覽。
+        </p>
+        <a href="/" class="btn-return">返回技術首頁</a>
+    </div>
+    <footer>© 2026 JASON111NN.GITHUB.IO</footer>
+</body>
+</html>
